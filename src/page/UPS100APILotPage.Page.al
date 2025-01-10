@@ -37,6 +37,10 @@ page 50002 "UPS100APILotPage"
                 {
                     Caption = 'House Lot Type';
                 }
+                field(uOM; Rec.API_UOM)
+                {
+                    Caption = 'UOM';
+                }
                 field(netSuitePONo; Rec."NetSuite P.O. No.")
                 {
                     Caption = 'NetSuite P.O. No.';

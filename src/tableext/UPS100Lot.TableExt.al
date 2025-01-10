@@ -10,5 +10,15 @@ tableextension 50002 "UPS100Lot" extends "CAI Lot"
         {
             DataClassification = CustomerContent;
         }
+        field(50002; "API_UOM"; Code[10])
+        {
+        }
     }
+    trigger OnAfterInsert()
+    begin
+        if API_UOM <> '' then begin
+            "Receiving UOM" := API_UOM;
+            Modify()
+        end;
+    end;
 }

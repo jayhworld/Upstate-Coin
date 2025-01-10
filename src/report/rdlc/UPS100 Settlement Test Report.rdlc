@@ -2617,9 +2617,6 @@ End Function
         <Field Name="AssayPct">
           <DataField>AssayPct</DataField>
         </Field>
-        <Field Name="AssayPctFormat">
-          <DataField>AssayPctFormat</DataField>
-        </Field>
         <Field Name="Type_MetalType">
           <DataField>Type_MetalType</DataField>
         </Field>

@@ -39,8 +39,10 @@ codeunit 50005 "UPS100 Lot Profit Functions"
     begin
         InventoryLedger.SetFilter("No.", LotFilter);
         InventoryLedger.FindSet();
+        MetalType.Reset();
+        MetalType.SetRange("Assay Balance", false);
         MetalType.FindSet();
-        MaxLimit := MetalType.Count;
+        MaxLimit := MetalType.Count - 1;
         MetalType.reset;
         FirstFldNo := InventoryLedger.FieldNo("Metal Type 1");
         FirstFldNoPercent := InventoryLedger.FieldNo("Metal Type 1 %");

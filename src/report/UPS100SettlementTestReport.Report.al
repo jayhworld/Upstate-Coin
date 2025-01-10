@@ -335,9 +335,13 @@ report 50002 "UPS100 Settlement Test Report"
                         ClAssayLine.SetRange("No.", ClAssayHead."No.");
                         ClAssayLine.SetRange("Assay No.", ClAssayHead."Assay No.");
                         ClAssayLine.SetRange("Metal Type", "Metal Type");
-                        if ClAssayLine.FindFirst then
-                            AssayPct := ClAssayLine."Percentage %";
-                    end;
+                        if ClAssayLine.FindFirst then BEGIN
+                            if ClAssayLine."Metal Type" = 'AG' then
+                                AssayPct := Format(ClAssayLine."Assay Percentage", 0, '<precision,0:1><standard format,0>')
+                            else
+                                AssayPct := Format(ClAssayLine."Assay Percentage", 0, '<precision,0:3><standard format,0>');
+                        END;
+                    END;
 
                     //\\<REF100.003>  start
                     Clear(PartialMA);
@@ -606,7 +610,7 @@ report 50002 "UPS100 Settlement Test Report"
         CommentRow: array[5] of Text[80];
         CommentLineIDX: Integer;
         CommentLine: Record "CAI Comment Line";
-        AssayPct: Decimal;
+        AssayPct: Text[20];
         ClAssayHead: Record "CAI Posted Prod. Assay Hdr.";
         ClAssayLine: Record "CAI Posted Prod. Assay Line";
         PartialMA: Boolean;
